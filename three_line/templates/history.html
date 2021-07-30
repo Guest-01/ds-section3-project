@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+history
+{% endblock %}
+
+{% block content %}
+{% for s in data %}
+    <ul>
+        <li>{{s.id}}</li>
+        <li>{{s.create_date}}</li>
+        <li>{{s.modified}}</li>
+        <li>{{s.title}}</li>
+        <li>{{s.content}}</li>
+        <li>{{s.result_1}}</li>
+        <li>{{s.result_2}}</li>
+        <li>{{s.result_3}}</li>
+    </ul>
+    <br>
+{% endfor %}
+{% endblock %}
