@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Summarize
+{% endblock %}
+
+{% block content %}
+<form action="{{url_for('main.summarize')}}" method="post">
+  <div class="mb-3">
+    <label for="title" class="form-label">제목 (Optional)</label>
+    <input type="text" class="form-control" id="title" name="title">
+  </div>
+  <div class="mb-3">
+    <label for="content" class="form-label">요약할 원문</label>
+    <textarea class="form-control" id="content" name='content' rows="5" placeholder="한글 2000자 이내만 가능합니다 (제목 포함)">이것은 글 요약이 얼마나 잘 되는지 테스트해보기 위함이다. 내가 얼마나 길게 쓸지는 모르겠지만, 이 API를 이용하면 글을 세 문장으로 줄여준다고 한다. 검수를 거치지 않고 쓴 이 글도 적절하게 잘 요약이 될까? 맞춤법이나 띄어쓰기가 완벽하지 않더라도 잘 요약해주는지 궁금하다. API의 출처는 네이버라서 기대가 된다. 중간에 전혀 상관없는 문장도 한번 넣어보겠다. 피자 치킨 맥주 냠냠. 요약하기란 사람마다도 솜씨가 천차만별이었는데 컴퓨터로 할 수 있게 된다면 참 편리할 것 같다. 이런 서비스를 제공해준 네이버에게 감사하다.
+    </textarea>
+  </div>
+  <div class="mb-3">
+    <button type="submit" class="btn btn-primary">요약하기</button>
+  </div>
+</form>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ol>
+  {% for message in messages %}
+  <li>{{ message }}</li>
+  {% endfor %}
+</ol>
+{% endif %}
+{% endwith %}
+{% endblock %}

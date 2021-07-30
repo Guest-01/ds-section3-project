@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+update
+{% endblock %}
+
+{% block content %}
+<form action="{{url_for('main.update', summary_id=data.id)}}" method="post">
+    <div class="mb-3">
+        <label for="title" class="form-label">제목</label>
+        <input type="text" class="form-control" id="title" name="title" value="{{data.title}}">
+    </div>
+    <div class="mb-3">
+        <label for="content" class="form-label">저장된 원문</label>
+        <textarea class="form-control" id="content" name='content' rows="5" readonly>{{data.content}}</textarea>
+    </div>
+    <div class="mb-1">
+        <label for="result_1" class="form-label">요약 문장 1</label>
+        <input type="text" class="form-control" id="result_1" name="result_1" value="{{data.result_1}}">
+    </div>
+    <div class="mb-1">
+        <label for="result_2" class="form-label">요약 문장 2</label>
+        <input type="text" class="form-control" id="result_2" name="result_2" value="{{data.result_2}}">
+    </div>
+    <div class="mb-3">
+        <label for="result_3" class="form-label">요약 문장 3</label>
+        <input type="text" class="form-control" id="result_3" name="result_3" value="{{data.result_3}}">
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">수정하기</button>
+    </div>
+</form>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ol>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ol>
+{% endif %}
+{% endwith %}
+{% endblock %}
