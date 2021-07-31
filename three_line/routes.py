@@ -23,6 +23,7 @@ def summarize():
             result = api_call(content, title=title)
         else:
             result = api_call(content)
+            title = "제목 없음"
 
         if "summary" in result.keys():  # means success
             sentences = result["summary"].split("\n")
