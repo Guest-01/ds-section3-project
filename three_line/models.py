@@ -1,5 +1,7 @@
-from three_line import db
+from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
+
+db = SQLAlchemy()
 
 
 class Summary(db.Model):
