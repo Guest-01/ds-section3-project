@@ -13,9 +13,7 @@ def create_app():
     app.secret_key = os.getenv('FLASK_SECRET')
     app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://postgres:{db_pw}@db:5432/postgres"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-    app.app_context().push()
     db.init_app(app)
-    db.create_all()
 
     # 라우팅(뷰):
     from .routes import bp
