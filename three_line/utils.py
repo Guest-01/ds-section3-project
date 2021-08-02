@@ -1,12 +1,14 @@
-import requests
-from dotenv import dotenv_values
+import os
 
-config = dotenv_values(".env")
+import requests
+from dotenv import load_dotenv
+
+load_dotenv(verbose=True)
 
 session = requests.Session()
 
-CLIENT_ID = config['CLIENT_ID']
-CLIENT_SECRET = config['CLIENT_SECRET']
+CLIENT_ID = os.getenv("NAVER_CLIENT_ID")
+CLIENT_SECRET = os.getenv("NAVER_CLIENT_SECRET")
 
 URL = "https://naveropenapi.apigw.ntruss.com/text-summary/v1/summarize"
 

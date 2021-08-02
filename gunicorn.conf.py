@@ -1,4 +1,6 @@
-wsgi_app = 'three_line:create_app()'
-bind = '0.0.0.0:8000'
-accesslog = 'access.log'
-errorlog = 'error.log'
+import multiprocessing
+
+wsgi_app = "three_line:create_app()"
+bind = "0.0.0.0:8000"
+workers = multiprocessing.cpu_count() * 2 + 1
+accesslog = "access.log"

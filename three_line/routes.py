@@ -3,7 +3,6 @@ from flask import Blueprint, flash, redirect, render_template, request, url_for
 from three_line import db
 from three_line.models import Summary
 from three_line.utils import api_call
-from pickle import dumps, loads
 
 bp = Blueprint("main", __name__)
 
@@ -53,10 +52,10 @@ def history():
     return render_template("history.html", data=summaries)
 
 
-@bp.route("/update/<int:summary_id>", methods=['GET', 'POST'])
+@bp.route("/update/<int:summary_id>", methods=["GET", "POST"])
 def update(summary_id):
     summary = Summary.query.get(summary_id)
-    if request.method == 'POST':
+    if request.method == "POST":
         summary.title = request.form.get("title")
         summary.result_1 = request.form.get("result_1")
         summary.result_2 = request.form.get("result_2")
@@ -64,8 +63,8 @@ def update(summary_id):
         summary.modified = "수정됨"
         db.session.commit()
         flash(f"{summary_id}번 요약본을 수정하였습니다")
-        return redirect(url_for('main.history'))
-    return render_template('update.html', data=summary)
+        return redirect(url_for("main.history"))
+    return render_template("update.html", data=summary)
 
 
 @bp.route("/delete/<int:summary_id>")
