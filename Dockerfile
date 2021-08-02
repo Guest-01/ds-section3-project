@@ -4,8 +4,8 @@ WORKDIR /usr/app
 
 COPY . .
 
-RUN pip install -r requirements.txt && python -c "from three_line import db, create_app;db.create_all(app=create_app())"
+RUN pip install -r requirements.txt
 
 EXPOSE 8000
 
-CMD [ "gunicorn" ]
+CMD [ "echo", "run with docker-compose" ]
