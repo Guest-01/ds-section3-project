@@ -133,3 +133,6 @@ dmypy.json
 
 # Development db (sqlite)
 dev.db
+
+# Production db
+data/

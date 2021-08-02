@@ -6,7 +6,7 @@ db = SQLAlchemy()
 
 class Summary(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
-    create_date = db.Column(db.Integer(), default=func.now())
+    create_date = db.Column(db.DateTime(), default=func.now())
     modified = db.Column(db.String(128), default="자동 요약됨")
     title = db.Column(db.String(512), default="제목 없음")
     content = db.Column(db.Text())
